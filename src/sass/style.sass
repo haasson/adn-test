@@ -1,0 +1,62 @@
+@import 'normalize'
+@import 'fonts'
+@import 'vars'
+@import 'interface'
+@import 'sprite'
+@import '../libs/magnific-popup/dist/magnific-popup.scss'
+
+@import 'sections/header'
+
+
+
+body
+   background-color: #ccc
+   
+.block
+   display: flex
+   justify-content: flex-end
+   width: 1200px
+   height: 400px
+   margin: 10px auto
+   padding: 15px
+   background-color: #ddd
+   overflow: hidden
+  
+.block1
+   width: 400px
+   background-color: lightcyan
+   transition: .4s
+  
+.right
+   width: 250px
+   opacity: 0  
+   transform-origin: right
+   transform: scaleX(0)
+  
+.mid
+   opacity: 0
+   transition-delay: .3s
+   transform: translateX(150px)
+   background-color: lightgreen
+  
+.left
+   opacity: 0
+   transition-delay: .5s
+   transform: translateX(150px)
+   background-color: yellow
+
+.active
+   opacity: 1
+   transform: scaleX(1) translateX(0px)
+
+.custom-mfp-bg
+   opacity: 0
+   transition: .3s
+
+.mfp-ready
+   opacity: .8
+   transition: .3s
+
+.mfp-removing
+   opacity: 0
+   transition: .3s

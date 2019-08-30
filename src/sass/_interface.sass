@@ -1,0 +1,50 @@
+html, body
+   height: 100%
+
+body
+   position: relative
+   min-width: 320px
+   font-family: 'Montserrat Semibold', serif
+   font-size: 16px
+   color: white
+
+img
+   max-width: 100%
+
+a
+   text-decoration: none
+
+.wrapper
+   max-width: 1800px
+   width: calc(100% - 50px)
+   height: 100%
+   margin: auto
+
+.section
+   padding: 50px 0
+   &-title
+      margin-bottom: 40px
+      text-align: center
+      font-size: 30px
+
+.button
+   padding: 20px 45px
+   border: none
+   font-size: 15px
+   color: #ffffff
+   text-transform: uppercase
+   cursor: pointer
+   outline: none
+   transition: 0.3s
+
+=pseudo
+   position: absolute
+   content: ''
+   display: block
+
+/*======================== MEDIA QUERIES ===============================*/
+
+
+@media (min-width: 680px)
+   .wrapper
+      width: calc(100% - 100px)

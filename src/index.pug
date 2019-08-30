@@ -1,0 +1,110 @@
+
+//-    <!-- link that opens popup -->
+//-    <a class="popup-with-form" href="#test-form">Open menu</a>
+
+//-    <!-- form itself -->
+//-    <div id="test-form" class="white-popup-block mfp-hide">
+//-        <div class="block">
+//-          <div class="block1 left"></div>
+//-          <div class="block1 mid"></div>
+//-          <div class="block1 right"></div>
+//-       </div>
+//-    </div>
+
+
+<!DOCTYPE html>
+html(lang="ru")
+   head
+      meta(charset="UTF-8")
+      meta(name="viewport" content="width=device-width, initial-scale=1.0")
+      meta(http-equiv="X-UA-Compatible" content="ie=edge")
+      title Document
+      link(rel="stylesheet" href="css/style.css")
+   body
+      header.header
+         video.header__video(src="video/teremok_final.mp4" loop muted autoplay preload="auto" poster="video/video-1920.jpg")
+
+         .header__topline
+            .header__navbar
+               a.header__logo(href="#")
+                  svg.icon.icon-logo
+                     use(xlink:href="svg/sprite.svg#mobile-red")
+
+               nav.header__menu
+                  a.header__menu-item(href="#")
+                     svg.icon.header__menu-icon.icon-forum
+                        use(xlink:href="svg/sprite.svg#forum") 
+                     span.header__menu-text Ваше мнение
+                  .header__menu-wrapper
+                     a.header__menu-item.header__menu-item_select(href="#" data-dropdown=".header__dropdown_menu")
+                        svg.icon.header__menu-icon.icon-food-menu
+                           use(xlink:href="svg/sprite.svg#food-menu")
+                        span.header__menu-text Наше меню
+                        svg.icon.icon-dropdown
+                           use(xlink:href="svg/sprite.svg#static")
+
+
+                  a.header__menu-item.header__menu-item_desktop(href="#")
+                     span.header__menu-text Акции
+
+                  a.header__menu-item.header__menu-item_desktop(href="#")
+                     span.header__menu-text Наши теремки
+
+               .header__location(data-dropdown=".header__dropdown_city")
+                  svg.icon.icon-location 
+                     use(xlink:href="svg/sprite.svg#menu") 
+                  span.header__menu-text Москва
+
+
+               .header__burger
+                  span.header__burger-line
+
+            .header__dropdown.header__dropdown_menu
+               a.header__dropdown-link(href="#") Новинки
+               a.header__dropdown-link(href="#") Завтраки
+               a.header__dropdown-link(href="#") Основное меню
+               a.header__dropdown-link(href="#") Домашние обеды
+               a.header__dropdown-link(href="#") Напитки
+
+            .header__dropdown.header__dropdown_city
+               a.header__dropdown-link(href="#") Краснодар
+               a.header__dropdown-link(href="#") Москва
+               a.header__dropdown-link(href="#") Санкт-Петербург
+
+         
+
+         .wrapper
+            .header__content
+               h1.header__title «Теремок»
+               .header__subtitle-wrapper
+                  svg.icon.icon-slogan
+                     use(xlink:href="svg/sprite.svg#teremok_slogan_small") 
+                  span.header__subtitle_first это
+                  svg.icon.icon-slogan.icon-slogan_right
+                     use(xlink:href="svg/sprite.svg#teremok_slogan_small") 
+               span.header__subtitle_second не фастфуд!
+               p.header__text Мы придерживаемся современного улучшенного подхода к быстрому питанию, в котором отменный вкус cочетается с высокой скоростью обслуживания
+               .header__arrow-block
+                  svg.icon.icon-pointer
+                     use(xlink:href="svg/sprite.svg#pointer-animate") 
+                  svg.icon.icon-arrow-down 
+                     use(xlink:href="svg/sprite.svg#arrow-large") 
+
+      .section
+         p some
+         p some
+         p some
+         p some
+         p some
+         p some
+         p some
+         p some
+         p some
+         p some
+
+
+
+
+
+
+      script(src="js/main.min.js")

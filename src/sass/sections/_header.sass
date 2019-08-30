@@ -1,0 +1,370 @@
+.header
+   position: relative
+   padding-bottom: 70px
+   background: #f6f5f4 url('../img/header-bg.jpg') no-repeat center top
+   background-size: cover
+   &::before
+      +pseudo
+      width: 100%
+      height: 100%
+      background-color: rgba(#000, .3)
+
+   &__video
+      display: none
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+   &__topline
+      position: fixed
+      z-index: 1000
+      top: 0
+      left: 0
+      width: 100%
+
+   &__navbar
+      height: 64px
+      display: flex
+      align-items: center
+      padding: 0 24px
+      box-sizing: border-box
+      transition: 1s .5s
+      &_white
+         background-color: #fff
+         .icon
+            &-logo
+               fill: $rouge
+            &-forum
+               fill: #000
+            &-food-menu
+               stroke: #000
+         .header
+            &__menu-text
+               color: #000
+            &__burger-line
+               background-color: #000
+               &::before, &::after
+                  background-color: #000
+
+   &__logo
+      position: relative
+
+   &__menu
+      display: flex
+      align-items: center
+      margin-left: auto
+      height: 100%
+      &-wrapper
+         height: 100%
+
+      &-item
+         display: flex
+         align-items: center
+         height: 100%
+         margin-left: 30px
+         &_desktop
+            display: none
+         &_select
+
+      &-icon
+         font-size: 25px
+         transition: fill .5s, stroke .5s
+         transition-delay: .5s
+
+      &-text
+         display: none
+         margin-left: 7px
+         color: white
+         text-transform: uppercase
+         font-size: 11px
+         letter-spacing: 1.83px
+         transition: .5s .5s
+
+   &__location
+      display: none  
+      height: 100%
+      cursor: pointer       
+
+   &__burger
+      $width: 30px
+      position: relative
+      flex-shrink: 1
+      height: 64px
+      width: $width
+      margin-left: 30px
+      cursor: pointer
+      &-line
+         position: absolute
+         width: $width
+         height: 2px
+         top: 50%
+         left: 50%
+         transform: translate(-50%, -50%)
+         background-color: #fff
+         transition: background-color .5s .5s
+         &::before,
+         &::after
+            +pseudo
+            width: $width
+            height: 2px
+            background-color: #fff
+            transform: translateY(7px)
+            transition: background-color .5s .5s, transform .5s 0s
+         &::after
+            transform: translateY(-7px)
+
+   &__dropdown
+      display: flex
+      align-items: center
+      width: 100%
+      height: 50px
+      background-color: $rouge
+      box-sizing: border-box
+      transition: height .2s
+      transition-delay: .5s
+      overflow: hidden
+      height: 0
+      &_menu
+         justify-content: center
+      &_city
+         justify-content: flex-end
+         padding-right: 30px
+      &-active
+         height: 50px
+      &-link
+         position: relative
+         display: block
+         margin: 0 10px
+         color: white
+         text-transform: uppercase
+         font-size: 11px
+         letter-spacing: 1.83px
+         &::after
+            +pseudo
+            width: 100%
+            height: 1px
+            bottom: -3px
+            background-color: #fff
+            transform-origin: left
+            transform: scaleX(0)
+            transition: transform .3s
+         &:hover
+            &::after
+               transform: scaleX(1)
+
+      
+
+   &__content
+      position: relative
+      padding-top: 110px
+      text-align: center
+      color: #fff
+
+   &__title
+      margin-top: 0
+      margin-bottom: 18px
+      font-family: 'Gora', sans-serif
+      font-size: 32px
+      font-weight: normal
+      text-transform: uppercase
+
+   &__subtitle
+      &-wrapper
+         display: flex
+         justify-content: center
+         align-items: center
+         margin-bottom: 12px
+
+      &_first
+         position: relative
+         display: inline-block
+         margin-bottom: 2px
+         font-size: 18px
+   
+   &__subtitle
+      &_second
+         display: block
+         margin-bottom: 24px
+         font-family: 'Hagin Caps Medium', serif
+         font-size: 32px
+         text-transform: uppercase
+
+   &__text
+      font-size: 14px
+      line-height: 24px
+
+   &__arrow-block
+      position: absolute
+      display: none
+      bottom: 80px
+      justify-content: center
+      align-items: center
+      width: 73px
+      height: 73px
+      overflow: hidden
+      cursor: pointer
+
+.icon
+   &-logo
+      font-size: 26px
+      fill: white
+      transition: fill .5s
+      transition-delay: .5s
+
+   &-forum
+      fill: white
+
+   &-food-menu
+      stroke: white
+      fill: transparent
+
+   &-dropdown
+      display: none
+
+   &-location
+      fill: $rouge
+      font-size: 14px
+
+   &-slogan
+      height: 6px
+      width: 110px
+      stroke-width: 1px
+      &_right
+         transform: scaleX(-1)
+
+
+/*======================== MEDIA QUERIES ===============================*/
+
+
+@media (min-width: 480px)
+   .header
+      &__text
+         padding: 0 50px
+
+@media (min-width: 680px)
+   .header
+      padding-bottom: 130px
+      &__navbar
+         padding: 0 50px
+      &__menu
+         &-item
+            margin-left: 48px
+         &-text
+            display: block
+
+      &__burger
+         $width: 36px
+         width: $width
+         margin-left: 48px
+         &-line
+            width: $width
+            &::before, &::after
+               width: $width
+
+      &__content
+         padding-top: 120px
+
+      &__title
+         font-size: 64px
+      &__subtitle_first
+         font-size: 36px
+         margin-bottom: 7px
+      &__subtitle_second
+         margin-bottom: 48px
+         font-size: 42px
+      &__text
+         width: 500px
+         margin: 0 auto
+   .icon
+      &-slogan
+         height: 13px
+         width: 230px
+
+@media (min-width: 1184px)
+   .header
+      height: 100vh
+      width: 100vw
+      padding: 0
+      &__video
+         display: block
+
+      
+         
+      &__menu
+         margin: 0 auto
+         &-item
+            &_desktop
+               display: flex
+         &-icon
+            display: none
+            
+
+      &__location
+         display: flex
+         align-items: center
+
+      &__burger
+         $width: 46px
+         width: $width
+         margin-left: 36px
+         &-line
+            width: $width
+            transition: background-color .5s .5s
+            &::before, &::after
+               width: $width
+         &:hover
+            .header__burger-line
+               &::before
+                  transform: translateY(10px)
+               &::after
+                  transform: translateY(-10px)
+
+
+      &__content
+         display: flex
+         flex-direction: column
+         justify-content: center
+         align-items: center
+         height: 100%
+         padding: 0
+
+      &__text
+         width: 500px
+         padding: 0
+
+      &__arrow-block
+         display: flex
+      
+
+
+   .icon
+      &-logo
+         font-size: 34px
+      &-arrow-down
+         position: absolute
+         font-size: 50px
+         fill: transparent
+         stroke: white
+         stroke-width: 2px
+         transform: rotate(90deg)
+      &-pointer
+         position: absolute
+         fill: transparent
+         stroke: white
+         height: 100%
+         width: 500%
+      &-dropdown
+         display: block
+         fill: transparent
+         stroke: $rouge
+
+@media (min-width: 1344px)
+   .header
+       &__content
+
+@media (min-width: 1680px)
+   .header
+      &__content
