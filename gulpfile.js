@@ -61,15 +61,6 @@ function svg() {
                            }
                         }
                      }
-                     // symbol: {
-                     //    sprite: "../../svg/sprite.svg",
-                     //    render: {
-                     //       scss: {
-                     //          dest: '../../../src/sass/_sprite.scss',
-                     //          template: "./src/sass/templates/_svg-template.scss"
-                     //       }
-                     //    }
-                     // }
                   }
                }))
                .pipe(cheerio({
@@ -108,6 +99,7 @@ function scripts() {
    return gulp.src([
                'src/libs/jquery/jquery-3.2.1.slim.min.js',
                'src/libs/magnific-popup/dist/jquery.magnific-popup.js',
+               'src/libs/slick-slider/slick/slick.js',
                'src/js/main.js'
             ])
               .pipe(gulpif(isDev, sourcemaps.init()))
