@@ -71,7 +71,7 @@ html(lang="ru")
                a.header__dropdown-link(href="#") Москва
                a.header__dropdown-link(href="#") Санкт-Петербург
 
-         
+
 
          .wrapper
             .header__content
@@ -90,88 +90,160 @@ html(lang="ru")
                   svg.icon.icon-arrow-down 
                      use(xlink:href="svg/sprite.svg#arrow-large") 
 
-      section.section.menu
-         h2.section-title Наше меню
-         - var categories = ["домашние обеды", "блины сытные", "блины сладкие", "супы", "каши и гарниры ", "салаты", "пельмени", "сырники"]
-         - var n = 0
-            .menu__category-slider
-               span.menu__category-underline
-               .menu__category
-                  each value in categories
-                     .menu__category-item= value
-               .menu__category-arrow.menu__category-arrow_left
-                  svg.icon.icon-menu-slider.icon-menu-slider_left
-                     use(xlink:href="svg/sprite.svg#static")
-               .menu__category-arrow.menu__category-arrow_right
-                  svg.icon.icon-menu-slider.icon-menu-slider_right
-                     use(xlink:href="svg/sprite.svg#static")
-            
-         .menu__product-slider
-            .menu__product
-               while n < (categories.length*3)
-                  .menu__product-item(data-product=`${Math.round((n-1) / 3)}`)
-                     img(src=`img/product-0.png`)
-                     span.menu__product-text= `Вкусные ${categories[Math.round((n-1) / 3)]} ${n++}`
-
-         .menu__buttons
-            a.button.menu__button(href="#" data-content="Все меню") Все меню
-            a.button.menu__button(href="#" data-content="Купоны") Купоны
-                     
-
-         .menu__opinion.opinion
-            .opinion__content
-               svg.icon.icon-opinion
-                     use(xlink:href="svg/sprite.svg#vashe_mnenie")
-               .opinion-wrapper
-                  p.opinion__text Помогите нам сделать наши теремки лучше! Заходите на форум, и оставляйте ваши отзывы и пожелания
-                  a.button.opinion__btn(href="#") Оставить отзыв
-
-         .menu__offer.offer
-            .offer-slider
-               .offer__list.offer__list_mobile
-                  - for(let i = 0; i < 3; i++)
-                     .offer__item.offer__item_mobile
-                        img(src="img/soup-mobile.jpg", alt="")
-               .offer__list.offer__list_desktop
-                  - for(let i = 0; i < 3; i++)
-                     .offer__item.offer__item_desktop
-                        img(src="img/offer-slide.png", alt="")
-
-         .menu__news.news 
-            .wrapper
-               .news__list
-                  .news__item
-                     span.news__tag Новости
-                     h3.news__title.news__title_gora Фотоконкурс #ТеремокВкусно в Instagram
-                     span.news__date 29.11.2017
-                  .news__item
-                     span.news__tag Пресса о нас
-                     h3.news__title.news__title_hagin Секреты успешного предпринимательства от Михаила Гончарова
-                     span.news__date 29.11.2017
-                  .news__item
-                     span.news__tag Горячие блинновости
-                     h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                     span.news__date 29.11.2017
-                  .news__item
-                     span.news__tag Пресса о нас
-                     h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
-                     span.news__date 29.11.2017
-                  .news__item
-                     span.news__tag Горячие блинновости
-                     h3.news__title.news__title_hagin «Теремок» — убойная сила!
-                     span.news__date 29.11.2017
-                  .news__item
-                     span.news__tag Горячие блинновости
-                     h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                     span.news__date 29.11.2017
-
-               a.button.news__btn(href="#") Все события
-                  
 
 
+      section.section.content
+         .wrapper.content-wrapper_mobile
+            .content__columns
+               .content__column_static
+                  .content__menu.menu
+                     h2.section-title.menu__title Наше меню
+                     - let categories = ["домашние обеды", "блины сытные", "блины сладкие", "супы", "каши и гарниры ", "салаты", "пельмени", "сырники"]
+                        .menu__category-slider
+                           span.menu__category-underline
+                           .menu__category
+                              each value in categories
+                                 .menu__category-item= value
+                           .menu__category-arrow.menu__category-arrow_left
+                              svg.icon.icon-menu-slider.icon-menu-slider_left
+                                 use(xlink:href="svg/sprite.svg#static")
+                           .menu__category-arrow.menu__category-arrow_right
+                              svg.icon.icon-menu-slider.icon-menu-slider_right
+                                 use(xlink:href="svg/sprite.svg#static")
+
+                     .menu__product-slider_mobile
+                        .menu__product_mobile
+                           - let n = 0
+                           while n < (categories.length*3)
+                              .menu__product-item(data-product=`${Math.round((n-1) / 3)}`)
+                                 img(src=`img/product-0.png`)
+                                 span.menu__product-text= `Вкусные ${categories[Math.round((n-1) / 3)]} номер ${n++}`
+
+                     .menu__product-sliders
+                           - let slider = 0
+                           - let item = 0
+                           while slider < categories.length
+                              - let randomBg = 15 * Math.floor(Math.random()*5 + 1)
+                              .menu__product-item(class=`menu__product-item_bg-${randomBg}`)
+                                 h4.menu__product-title= `${categories[slider++]}`
+                                 .menu__product-slider_desktop
+                                    - if (item === 3) item = 0
+                                    while item < 3
+                                       .menu__product-slide
+                                          img(src=`img/product-${item}.png`)
+                                          span.menu__product-text= `Вкусные ${categories[slider-1]} номер ${item++}`
+
+                     .menu__buttons
+                        a.button.menu__button.menu__button_mobile(href="#") Все меню
+                        a.button.menu__button(href="#") Купоны
 
 
-                  
+                  .content__opinion.opinion.opinion_mobile
+                     .opinion__content
+                        svg.icon.icon-opinion
+                           use(xlink:href="svg/sprite.svg#vashe_mnenie")
+                        .opinion-wrapper
+                           p.opinion__text Помогите нам сделать наши теремки лучше! Заходите на форум, и оставляйте ваши отзывы и пожелания
+                           a.button.opinion__btn(href="#") Оставить отзыв
+
+
+                  .content__offer.offer
+                     .offer-slider
+                        .offer__list.offer__list_mobile
+                           - for(let i = 0; i < 3; i++)
+                              .offer__item.offer__item_mobile
+                                 img(src="img/soup-mobile.jpg" alt="")
+                        .offer__list.offer__list_desktop
+                           - for(let i = 0; i < 3; i++)
+                              .offer__item.offer__item_desktop
+                                 img(src=`img/offer-slide-${i}.jpg` alt="")
+
+
+               .content__column_dynamic
+
+                  .content__opinion.opinion.opinion_desktop
+                     .opinion__content
+                        svg.icon.icon-opinion
+                           use(xlink:href="svg/sprite.svg#vashe_mnenie")
+                        .opinion-wrapper
+                           p.opinion__text Помогите нам сделать наши теремки лучше! Заходите на форум, и оставляйте ваши отзывы и пожелания
+                           a.button.opinion__btn(href="#") Оставить отзыв
+
+                  .content__news.news 
+                     .wrapper
+                        .news__list
+                           .news__item
+                              span.news__tag Новости
+                              h3.news__title.news__title_gora Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Пресса о нас
+                              h3.news__title.news__title_hagin Секреты успешного предпринимательства от Михаила Гончарова
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Пресса о нас
+                              h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_hagin «Теремок» — убойная сила!
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Новости
+                              h3.news__title.news__title_gora Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Пресса о нас
+                              h3.news__title.news__title_hagin Секреты успешного предпринимательства от Михаила Гончарова
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Пресса о нас
+                              h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_hagin «Теремок» — убойная сила!
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Пресса о нас
+                              h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_hagin «Теремок» — убойная сила!
+                              span.news__date 29.11.2017
+                           .news__item
+                              span.news__tag Горячие блинновости
+                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
+                              span.news__date 29.11.2017
+
+                        a.button.news__btn(href="#") Все события
+
+
+
+
+
+
 
 
 

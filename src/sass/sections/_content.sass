@@ -1,0 +1,448 @@
+.content
+   background-color: #f6f5f4
+
+   &-wrapper_mobile
+      width: 100%
+
+   &__column
+      &_static
+         // display: flex
+         // flex-direction: column
+
+   
+   
+/*======================== MEDIA QUERIES ===============================*/
+
+
+@media (min-width: 1184px)
+   .content
+      padding-top: 65px
+      &-wrapper_mobile
+         width: calc(100% - 100px)
+
+      &__columns
+         position: relative
+
+      &__column
+         &_static
+            box-sizing: border-box
+            padding-right: 24px
+            width: 50%
+         &_dynamic
+            box-sizing: border-box
+            padding-left: 24px
+            position: absolute
+            top: 0
+            left: 50%
+            width: 50%
+
+ 
+/*============================= END =====================================*/  
+   
+
+
+.menu
+   display: flex
+   flex-direction: column
+   color: #000
+
+
+   &__category
+      font-family: 'Hagin Caps Medium', sans-serif
+      font-size: 18px
+      text-transform: uppercase
+      letter-spacing: 0
+
+      &-slider
+         position: relative
+
+      
+      &-underline
+         position: absolute
+         display: block
+         width: 140px
+         height: 2px
+         top: 19px
+         left: 50%
+         transform: translateX(-50%)
+         background-color: $rouge
+         transition: .3s
+
+
+      &-item
+         padding: 0 13px
+         box-sizing: border-box
+         outline: none
+
+      &-arrow
+         position: absolute
+         display: flex
+         align-items: center
+         width: 85px
+         height: 52px
+         top: 50%
+         transform: translateY(-50%)
+
+         &_left
+            left: 0
+            background-image: linear-gradient(to right, #f5f5f5, rgba(255, 255, 255, 0))
+
+         &_right
+            right: 0
+            background-image: linear-gradient(to left, #f5f5f5, rgba(255, 255, 255, 0))
+
+      
+   &__product
+
+      &_mobile
+         margin-top: 27px
+         margin-bottom: 5px
+
+         .slick-slide
+            padding: 0 8px
+
+         .slick-list
+            padding: 4px 0 !important
+
+      &-sliders
+         display: none
+
+      &-item
+         padding: 25px 10px
+         height: 280px
+         width: 272px
+         box-sizing: border-box
+         box-shadow: 0 2px 4px 0 #b8b8b8
+         border-radius: 4px
+         text-align: center
+         img
+            margin: 0 auto
+         &_bg-15
+            background: url('../img/15.jpg') no-repeat center
+         &_bg-30
+            background: url('../img/30.jpg') no-repeat center
+         &_bg-45
+            background: url('../img/45.jpg') no-repeat center
+         &_bg-60
+            background: url('../img/60.jpg') no-repeat center
+         &_bg-75
+            background: url('../img/75.jpg') no-repeat center
+
+      &-text
+         display: inline-block
+         width: 70%
+         margin-top: 15px
+         font-family: 'Montserrat Semibold', serif
+         font-size: 11px
+         text-transform: uppercase
+         letter-spacing: 2px
+
+
+   &__buttons
+      display: flex
+      justify-content: center
+      margin-top: 32px
+      margin-bottom: 48px
+
+   &__button 
+      margin: 0 8px
+
+
+
+/*======================== MEDIA QUERIES ===============================*/
+
+
+@media (min-width: 1184px)
+   .menu
+      flex-wrap: wrap
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+
+      &__title
+         margin: 0
+         display: inline-block
+      
+      &__category-slider
+         display: none
+
+      &__product
+         &_mobile
+            display: none
+         &-sliders
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            margin-left: -10px
+            margin-top: 25px
+            order: 5
+            overflow: hidden
+         &-slider
+            &_desktop
+               position: static
+               width: 100%
+
+         &-slide
+            cursor: pointer
+            overflow: visible
+            &:hover
+               img
+                  transform: translateY(-10px)
+               span
+                  padding-top: 10px
+            img
+               transform: translateY(0px)
+               transition: .3s
+
+
+         &-item
+            position: relative
+            display: flex
+            flex-direction: column
+            align-items: center
+            width: calc(50% - 24px)
+            height: 424px
+            margin: 12px
+            padding: 25px 10px
+            &-dots
+               position: absolute
+               left: 0
+               bottom: 30px
+               display: flex
+               justify-content: center
+               width: 100%
+               padding: 0
+               margin: 0
+               & li
+                  list-style: none
+                  margin: 0 5px
+                  cursor: pointer
+                  & button
+                     display: none
+
+
+         &-title
+            margin-top: 0
+            margin-bottom: 45px
+            font-family: 'Hagin Caps Medium', serif
+            font-size: 18px
+
+         
+
+         &-text
+            margin-top: 12px
+            transition: .3s
+
+      &__buttons
+         margin: 0
+         order: 1
+
+      &__button
+         &_mobile
+            display: none
+
+.product-ring
+   stroke-dasharray: 0 1000
+.slick-active .product-ring
+   stroke-dasharray: 60 1000
+   transition: stroke-dasharray 3s
+   transition-delay: .5s
+
+/*============================= END =====================================*/
+
+
+.opinion
+   display: flex
+   justify-content: center
+   align-items: center
+   background: url('../img/forum_mobile.jpg') no-repeat center
+   background-size: cover
+   padding: 48px 23px
+
+   &_desktop
+      display: none
+
+   &__content
+      display: flex
+      flex-direction: column
+      align-items: center
+
+   &-wrapper
+      display: flex
+      flex-direction: column
+      align-items: center
+
+   &__text
+      max-width: 280px
+      margin-top: 25px
+      font-size: 12px
+      line-height: 22px
+      color: #fff
+      text-align: center
+
+   &__btn 
+      margin-top: 16px
+      background-color: $pale
+      border: none
+
+/*======================== MEDIA QUERIES ===============================*/
+
+
+@media (min-width: 680px)
+   .opinion
+      padding: 135px
+      &__content
+         flex-direction: row
+      &-wrapper
+         margin-left: 35px
+      &__text
+         margin-top: 0
+
+@media (min-width: 1184px)
+   .opinion
+      &_mobile
+         display: none
+      &_desktop
+         display: flex
+         height: 248px
+         padding: 0
+
+      &__content
+         justify-content: center
+
+
+/*============================= END =====================================*/
+
+
+
+.offer
+   padding-top: 50px
+
+   &__list
+      &_desktop
+         display: none
+         &-dots
+            display: none
+      
+
+   &__item
+      margin: 0 10px
+
+/*======================== MEDIA QUERIES ===============================*/
+@media (min-width: 680px)
+   .offer
+      overflow: hidden
+      &__list
+         &_mobile
+            display: none
+         &_desktop
+            display: block
+            
+      &__item
+         img
+            width: 570px
+
+@media (min-width: 1184px)
+   .offer
+      padding-top: 0
+      margin-top: 20px
+      margin-right: 10px
+
+      &__list
+         &_desktop
+            margin-bottom: 70px
+            margin-left: -15px
+            &-dots
+               position: absolute
+               left: 0
+               bottom: -40px
+               display: flex
+               justify-content: center
+               width: 100%
+               padding: 0
+               margin: 0
+               & li
+                  list-style: none
+                  margin: 0 5px
+                  cursor: pointer
+                  & button
+                     display: none
+      &__item
+         img
+            margin: 0 auto
+            width: 100%
+
+/*============================= END =====================================*/
+      
+
+
+.news
+   padding-bottom: 40px
+   text-align: center
+   color: #000
+   &__list
+      margin-bottom: 50px
+   &__item
+      display: flex
+      flex-direction: column
+      align-items: center
+      padding: 40px 0
+      border-bottom: 1px solid #cecece
+
+   &__tag
+      display: block
+      padding: 2px 8px
+      font-size: 11px
+      letter-spacing: 1.83px
+      text-transform: uppercase
+      background-color: $pale-peach
+      border-radius: 10px
+
+   &__title
+      text-transform: uppercase
+      font-size: 18px
+      line-height: 24px
+      max-width: 400px
+      &_gora
+         font-family: 'Gora', sans-serif
+      &_hagin
+         font-family: 'Hagin Caps Medium', sans-serif
+      &_montserrat-black
+         font-family: 'Montserrat Black', sans-serif
+
+   &__date
+      font-size: 11px
+      letter-spacing: 1.83px
+
+   &__btn
+      margin-top: 40px
+
+/*======================== MEDIA QUERIES ===============================*/
+
+@media (min-width: 1184px)
+   .news
+      padding-bottom: 40px
+
+
+
+
+/*============================= END =====================================*/
+
+
+
+.icon
+   &-menu-slider
+      fill: transparent
+      stroke: $rouge
+      font-size: 28px
+      &_left
+         transform: rotate(90deg)
+      &_right
+         margin-left: auto
+         transform: rotate(-90deg)
+
+   &-opinion
+      fill: white
+      font-size: 120px
+
+

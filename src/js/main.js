@@ -27,10 +27,11 @@ $(document).ready(function () {
    });
 
 
-// --- Slick Sliders ---
+   // --- Slick Sliders ---
 
    let category = $('.menu__category');
-   let product = $('.menu__product');
+   let product = $('.menu__product_mobile');
+   let productDesktop = $('.menu__product-slider_desktop')
 
    category.slick({
       prevArrow: $('.menu__category-arrow_left'),
@@ -41,7 +42,7 @@ $(document).ready(function () {
       variableWidth: true,
       focusOnSelect: true
    });
-   
+
    product.slick({
       prevArrow: $('.menu__product-arrow_left'),
       nextArrow: $('.menu__product-arrow_right'),
@@ -50,6 +51,19 @@ $(document).ready(function () {
       centerMode: true,
       variableWidth: true
    });
+
+   productDesktop.slick({
+      arrows: true,
+      prevArrow: $('.menu__product-slider-arrow_left'),
+      nextArrow: $('.menu__product-slider-arrow_right'),
+      dots: true,
+      dotsClass: 'menu__product-item-dots',
+      autoplay: true,
+      infinite: true,
+      fade: true,
+      cssEase: 'linear'
+   });
+
 
    $('.offer__list_mobile').slick({
       arrows: false,
@@ -66,7 +80,21 @@ $(document).ready(function () {
       infinite: true,
       slidesToShow: 1,
       centerMode: true,
-      variableWidth: true
+      variableWidth: true,
+      mobileFirst: true,
+      responsive: [
+         {
+            breakpoint: 1184,
+            settings: {
+               fade: true,
+               variableWidth: false,
+               mobileFirst: false,
+               dots: true,
+               dotsClass: 'offer__list_desktop-dots',
+
+            }
+         }
+      ]
    });
 
 
@@ -101,8 +129,24 @@ $(document).ready(function () {
    }
 
 
+   document.querySelectorAll('.menu__product-item-dots li').forEach(setDynamicSliderDots)
+   document.querySelectorAll('.offer__list_desktop-dots li').forEach(setDynamicSliderDots)
 
 
+   function setDynamicSliderDots(item) {
+      item.innerHTML = `
+         <svg class="product-dot" width="20px" height="20px" viewBox="0 0 20 20">
+            <g>
+               <circle cx="10" cy="10" r="4" fill="#92a9b5"></circle>
+               <circle class="product-ring" cx="10" cy="10" r="9" fill="transparent" stroke="#92a9b5" stroke-width="2px">
+               </circle>
+            </g>
+         </svg>`
+   }
+
+   document.querySelector('.menu__title').addEventListener('click', function () {
+      document.querySelector('.product-ring').classList.toggle('product-ring_active')
+   })
 
 
    // --------- HEADER
@@ -169,13 +213,12 @@ $(document).ready(function () {
          cityBtn.removeEventListener('mouseover', showDropdown);
       }
 
-      
+      window.pageYOffset > 0 ? showNavbarBg() : '';
+      setAjustScroll();
    }
 
    init();
-   window.addEventListener('resize', function () {
-      init();
-   })
+   window.addEventListener('resize', init)
 
 
 
@@ -191,7 +234,7 @@ $(document).ready(function () {
    pointer.addEventListener('click', function (e) {
       let menuSection = document.querySelector('.menu')
       window.scrollTo({
-         top: getCoords(menuSection).top - 64,
+         top: getCoords(menuSection).top - 40,
          behavior: 'smooth'
       });
    });
@@ -203,4 +246,56 @@ $(document).ready(function () {
          left: box.left + pageXOffset
       }
    }
+
+   // ------------ CONTENT ---------------
+
+   function setAjustScroll() {
+      // Координаты блока
+      let content = document.querySelector('.content');
+      let position = content.offsetTop;
+
+      // Координаты, с которых идет адаптивный скролл
+      let start = position + 70;
+      let stop = position + content.offsetHeight - document.documentElement.clientHeight;
+
+      // Разница в высоте между колонками
+      let staticBlock = document.querySelector('.content__column_static');
+      let dynamicBlock = document.querySelector('.content__column_dynamic');
+      let heightDiff = dynamicBlock.offsetHeight - staticBlock.offsetHeight;
+
+      let current;
+      let translate = 0;
+
+      setTranslate();
+
+      // Обработка скролла
+      document.addEventListener('scroll', setTranslate);
+
+      function setTranslate() {
+         if (document.documentElement.clientWidth > 1183) {
+            if (window.pageYOffset > start && window.pageYOffset < stop) {
+               current = window.pageYOffset - start;
+               translate = current * heightDiff / (stop - start);
+            };
+            if (window.pageYOffset < start) translate = 0
+            else if (window.pageYOffset > stop) translate = heightDiff;
+            dynamicBlock.style.transform = `translateY(-${translate}px)`
+         }
+         else dynamicBlock.style.transform = ``;
+      }
+   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
