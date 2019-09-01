@@ -233,10 +233,92 @@ html(lang="ru")
                      p.about__text Компания "Теремок" основана в 1998 году. В настоящее время "Теремок" – крупнейшая сеть ресторанов русской кухни, насчитывающая более 280 точек. Мы постоянно развиваемся, открывая новые рестораны.
                      a.button.about__btn Наши заведения
 
+      section.section.partners
+         .wrapper
+            .partners__content
+               h2.section-title.partners__title Для партнеров
+               p.partners__text Наша компания всегда находится в поисках новых партнеров. Если у вас есть какое-то предложение мы готовы его рассмотреть, и связаться с вами для дальнейшего обсуждения сотрудничества
+               a.button.partners__btn_red Стать партнером 
+
+         .partners__buttons
+            a.button.partners__btn Партнеры
+            a.button.partners__btn.partners__btn_wo-border Поставщики
+         .partners__slider
+            .partners__slider-list
+               - for(let i = 0; i < 8; i++)
+                  .partners__slider-item
+                     img(src="img/coca-cola.png" alt="")
+            .partners__slider-arrow.partners__slider-arrow_left
+               svg.icon.icon-arrow-large
+                  use(xlink:href="svg/sprite.svg#arrow-large") 
+            .partners__slider-arrow.partners__slider-arrow_right
+               svg.icon.icon-arrow-large
+                  use(xlink:href="svg/sprite.svg#arrow-large") 
+
+      footer.footer
+         .wrapper
+            .footer__content_mobile
+               span.footer__office Центральный офис в Москве
+               a.footer__phone(a="#" tel="+74959562730") +7 (495) 956-27-30 
+               .select.footer__select
+                  span.select__value.select__text Москва
+                  svg.icon.icon-select-caret
+                     use(xlink:href="svg/sprite.svg#static-mobile")
+                  .select__dropdown
+                     .select__option.select__text Краснодар
+                     .select__option.select__option_selected.select__text Москва
+                     .select__option.select__text Санкт-Петербург
+
+               .footer__copy @ Теремок, 2017
+
+
+            .footer__content_desktop
+               .footer__item.footer__item_logo
+                  a.footer__logo(href="#")
+                     svg.icon.icon-footer-logo
+                        use(xlink:href="svg/sprite.svg#mobile-red")
+
+               mixin footerBlock(arr)
+                  .footer__item
+                     - for (let i = 0; i < arr.length; i++)
+                        a.footer__link(href="")= arr[i]
+               
+               +footerBlock(['О Теремке', 'Меню', 'Калькулятор калорий', 'Акции', 'Наши заведения'])
+               +footerBlock(['Контакты', 'Ваше мнение', 'События', 'Работа у нас'])
+               +footerBlock(['Предложить помещение', 'Предложить продукцию', 'Прессе', 'Партнерство', 'Связаться с руководством'])
+
+               .footer__item.footer__item_contact
+                  a.footer__email(href="" mailto="office@teremok.ru") office@teremok.ru
+                  address.footer__address 119021, Москва, Зубовский бульвар, д. 22/39
+                  a.footer__phone(href="" tel="+74959562730") +7 (495) 956-27-30
+                  a.footer__phone(href="" tel="+74957369394") +7 (495) 736-93-94
+
+
+
+         .footer__bottom
+            .wrapper
+               .footer__bottom-content
+                  .footer__copy.footer__copy_bottom @ Теремок, 2017
+                  .footer__social-list
+                     mixin social(type)
+                        .footer__social-item
+                           .footer__social
+                              a(href="#")
+                                 svg.icon.icon-footer-social
+                                    use(xlink:href=`svg/sprite.svg#${type}`)
+                     +social('instagram')
+                     +social('vk')
+                     +social('fb')
+                     +social('tw')
+
+                  .footer__developer
+                     a.footer__developer-link(href="#") Разработка сайта - ADN Digital Studio
 
 
 
 
+
+ 
 
 
 

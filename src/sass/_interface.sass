@@ -22,7 +22,6 @@ a
    margin: auto
 
 .section
-   padding-top: 32px
    &-title
       margin-bottom: 32px
       text-align: center
@@ -43,6 +42,64 @@ a
    cursor: pointer
    outline: none
    transition: 0.3s
+
+.select
+   position: relative
+   display: flex
+   justify-content: space-between
+   align-items: center
+   padding: 0 10px
+   box-sizing: border-box
+   width: 250px
+   height: 32px
+   background-color: #fff
+   border: 1px solid #000 
+   border-radius: 16px
+   cursor: pointer
+
+   &_active
+      border-bottom-left-radius: 0
+      border-bottom-right-radius: 0
+
+   &__text
+      font-size: 11px
+      line-height: 12px
+      letter-spacing: 1.8px
+      text-transform: uppercase
+
+   &__dropdown
+      box-sizing: border-box
+      display: none
+      position: absolute
+      background-color: #fff
+      left: -1px
+      bottom: 0
+      transform: translateY(100%)
+      width: calc(100% + 2px)
+      border: 1px solid #000 
+      border-bottom-left-radius: 16px
+      border-bottom-right-radius: 16px
+      overflow: hidden
+      &_active
+         display: block
+
+   &__option
+      padding: 0 10px
+      height: 28px
+      display: flex
+      align-items: center
+      &:hover
+         background-color: $pale-peach
+      &_selected
+         background-color: $pale
+
+
+
+.icon-select-caret
+   fill: transparent
+   stroke: $rouge
+   width: 24px
+   height: 24px
 
 .slick-slide
    outline: none

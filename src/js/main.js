@@ -5,7 +5,7 @@ let blocks = document.querySelectorAll('.block1');
 
 $(document).ready(function () {
 
-   
+
 
    $('.popup-with-form').magnificPopup({
       type: 'inline',
@@ -95,6 +95,26 @@ $(document).ready(function () {
                dots: true,
                dotsClass: 'offer__list_desktop-dots',
 
+            }
+         }
+      ]
+   });
+
+   $('.partners__slider-list').slick({
+      arrows: false,
+      autoplay: true,
+      infinite: true,
+      slidesToShow: 1,
+      centerMode: true,
+      variableWidth: true,
+      mobileFirst: true,
+      responsive: [
+         {
+            breakpoint: 1184,
+            settings: {
+               arrows: true,
+               prevArrow: $('.partners__slider-arrow_left'),
+               nextArrow: $('.partners__slider-arrow_right'),
             }
          }
       ]
@@ -237,7 +257,7 @@ $(document).ready(function () {
    pointer.addEventListener('click', function (e) {
       let menuSection = document.querySelector('.menu')
       window.scrollTo({
-         top: getCoords(menuSection).top - 40,
+         top: getCoords(menuSection).top - 70,
          behavior: 'smooth'
       });
    });
@@ -287,20 +307,59 @@ $(document).ready(function () {
          else dynamicBlock.style.transform = ``;
       }
 
-      svg4everybody({});
    };
 
 
+   // ------------ CONTENT ---------------
+
+   let partnersBtns = document.querySelectorAll('.partners__btn');
+   partnersBtns.forEach(item => {
+      item.addEventListener('click', function (e) {
+         e.preventDefault();
+         partnersBtns.forEach(btn => btn.classList.add('partners__btn_wo-border'))
+         this.classList.remove('partners__btn_wo-border');
+      })
+   })
+
+
+   // ------------ SELECT ---------------
+
+   // Обработчики клика на все селекты
+   let selects = document.querySelectorAll('.select')
+   selects.forEach(item => {
+      item.addEventListener('click', () => {
+         item.classList.toggle('select_active');
+         item.querySelector('.select__dropdown').classList.toggle('select__dropdown_active');
+
+      });
+
+      // Обработчики клика по опциям
+      let options = item.querySelectorAll('.select__option');
+      options.forEach(el => {
+         el.addEventListener('click', function () {
+            document.querySelector('.select__value').innerText = el.innerText;
+            document.querySelector('.select__option_selected').classList.remove('select__option_selected')
+            el.classList.add('select__option_selected')
+         });
+      });
+   });
+
+   // Закрытие дропдауна при клике вне селекта
+   document.addEventListener('click', function (e) {
+      if (!e.target.classList.contains('select') && !e.target.classList.contains('select__value')) {
+         selects.forEach(item => {
+            item.classList.remove('select_active');
+            item.querySelector('.select__dropdown').classList.remove('select__dropdown_active');
+         })
+      }
+   })
 
 
 
 
 
 
-
-
-
-
+   svg4everybody({});
 
 
 });
