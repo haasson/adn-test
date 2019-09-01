@@ -1,25 +1,26 @@
-let blocks = document.querySelectorAll('.block1');
-
-
-// --- Magnific Popup Settings ---
-
 $(document).ready(function () {
+   
+   // --- Magnific Popup Settings ---
+   let blocks = document.querySelectorAll('.p-menu__block');
 
-
-
-   $('.popup-with-form').magnificPopup({
+   $('.header__burger-link').magnificPopup({
       type: 'inline',
       preloader: true,
-      mainClass: 'custom-mfp-bg',
       removalDelay: 300,
+      mainClass: 'custom-mfp-bg',
+      showCloseBtn: false,
 
       callbacks: {
          open: function () {
+            $('.p-menu__close-btn').on('click', function (event) {
+               event.preventDefault();
+               $.magnificPopup.close();
+            });
             setTimeout(() => {
                blocks.forEach(el => {
                   el.classList.add('active');
                })
-            }, 100);
+            }, 200);
          },
          close: function () {
             blocks.forEach(el => {
@@ -173,9 +174,6 @@ $(document).ready(function () {
 
 
    // --------- HEADER
-
-
-
    let navbar = document.querySelector('.header__navbar')
    let menuBtn = document.querySelector('.header__menu-item_select');
    let cityBtn = document.querySelector('.header__location');
@@ -310,7 +308,7 @@ $(document).ready(function () {
    };
 
 
-   // ------------ CONTENT ---------------
+   // ------------ PARTNERS ---------------
 
    let partnersBtns = document.querySelectorAll('.partners__btn');
    partnersBtns.forEach(item => {
@@ -355,11 +353,6 @@ $(document).ready(function () {
    })
 
 
-
-
-
-
-   svg4everybody({});
-
+   // svg4everybody({});
 
 });

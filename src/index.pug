@@ -1,17 +1,3 @@
-
-//-    <!-- link that opens popup -->
-//-    <a class="popup-with-form" href="#test-form">Open menu</a>
-
-//-    <!-- form itself -->
-//-    <div id="test-form" class="white-popup-block mfp-hide">
-//-        <div class="block">
-//-          <div class="block1 left"></div>
-//-          <div class="block1 mid"></div>
-//-          <div class="block1 right"></div>
-//-       </div>
-//-    </div>
-
-
 <!DOCTYPE html>
 html(lang="ru")
    head
@@ -55,9 +41,11 @@ html(lang="ru")
                      use(xlink:href="svg/sprite.svg#menu") 
                   span.header__menu-text Москва
 
-
                .header__burger
-                  span.header__burger-line
+                  a.header__burger-link.header__burger-link_mobile(href="#mfp-menu_mobile")
+                     span.header__burger-line
+                  a.header__burger-link(href="#mfp-menu")
+                     span.header__burger-line
 
             .header__dropdown.header__dropdown_menu
                a.header__dropdown-link(href="#") Новинки
@@ -315,18 +303,99 @@ html(lang="ru")
                      a.footer__developer-link(href="#") Разработка сайта - ADN Digital Studio
 
 
+mixin p-menuSocial(type)
+   .p-menu__social-item
+      a.p-menu__social-link(href="#")
+         svg.icon.icon-p-social
+            use(xlink:href=`svg/sprite.svg#${type}`)
+
+//- .white-popup-block.mfp-hide#mfp-menu_mobile
+//-    .p-menu
+//-       .p-menu__section_top.p-menu__section
+//-          .p-menu__close-btn
+//-             svg.icon.icon-p-close
+//-                use(xlink:href="svg/sprite.svg#desktop-close")
+//-          .p-menu__logo
+//-             svg.icon.icon-p-logo
+//-                use(xlink:href="svg/sprite.svg#mobile-red")
+//-          .p-menu__list
+//-             a.p-menu__link(href="#") Наше меню
+//-             a.p-menu__link(href="#") Ваше мнение
+//-             a.p-menu__link(href="#") О теремке
+//-             a.p-menu__link(href="#") Работа у нас
+//-             a.p-menu__link(href="#") Наши акции
+//-             a.p-menu__link(href="#") События
+//-             a.p-menu__link(href="#") наши теремки
+//-             a.p-menu__link(href="#") Контакты
+//-          .p-menu__social-list
+//-             +p-menuSocial('instagram')
+//-             +p-menuSocial('vk')
+//-             +p-menuSocial('fb')
+//-             +p-menuSocial('tw')
+//-       .p-menu__section_bottom.p-menu__section
+//-          .p-menu__list.p-menu__list_bottom
+//-             a.p-menu__link.p-menu__link_black(href="#") калькулятор калорий
+//-             a.p-menu__link.p-menu__link_black(href="#") Предложить помещение
+//-             a.p-menu__link.p-menu__link_black(href="#") Предложить продукцию
+//-             a.p-menu__link.p-menu__link_black(href="#") Прессе
+//-             a.p-menu__link.p-menu__link_black(href="#") Партнерство
+//-             a.p-menu__link.p-menu__link_black(href="#") Связаться с руководством
+//-          .select.p-menu__select
+//-             span.select__value.select__text Москва
+//-             svg.icon.icon-select-caret
+//-                use(xlink:href="svg/sprite.svg#static-mobile")
+//-             .select__dropdown
+//-                .select__option.select__text Краснодар
+//-                .select__option.select__option_selected.select__text Москва
+//-                .select__option.select__text Санкт-Петербург
+//-          .p-menu__delivery
+//-             span.p-menu__delivery-text Доставка наших блюд в Москве - FOODFOX
 
 
 
- 
+.white-popup-block.mfp-hide#mfp-menu
+   .p-menu
+      mixin squareBlock(obj)
+         .p-menu__square
+            img.p-menu__img(src=`img/${obj.image}`)
+            .p-menu__symbol
+               svg.icon.icon-p-symbol
+                  use(xlink:href=`svg/sprite.svg#${obj.svg}`)
+      .p-menu__block.p-menu__block_left
+         +squareBlock({image: 'p-menu-1.jpg', svg: 'o_teremke'})
+         +squareBlock({image: 'p-menu-2.jpg', svg: 'nashe_menu'})
+      .p-menu__block.p-menu__block_mid
+         +squareBlock({image: 'p-menu-2.jpg', svg: 'vashe_mnenie'})
+         +squareBlock({image: 'p-menu-1.jpg', svg: 'nashi_akcii'})
 
-
-
-
-
- 
-
-
+      .p-menu__block.p-menu__block_right
+         .p-menu__close-btn
+            svg.icon.icon-p-close
+               use(xlink:href="svg/sprite.svg#desktop-close")
+         .p-menu__logo
+            svg.icon.icon-p-logo
+               use(xlink:href="svg/sprite.svg#mobile-red")
+         .select.p-menu__select
+            span.select__value.select__text Москва
+            svg.icon.icon-select-caret
+               use(xlink:href="svg/sprite.svg#static-mobile")
+            .select__dropdown
+               .select__option.select__text Краснодар
+               .select__option.select__option_selected.select__text Москва
+               .select__option.select__text Санкт-Петербург
+         .p-menu__list
+            a.p-menu__link(href="#") События
+            a.p-menu__link(href="#") Наши заведения
+            a.p-menu__link(href="#") Работа у нас
+            a.p-menu__link(href="#") Контакты
+            a.p-menu__link(href="#") Калькулятор калорий
+         .p-menu__social-list
+            +p-menuSocial('instagram')
+            +p-menuSocial('vk')
+            +p-menuSocial('fb')
+            +p-menuSocial('tw')
+         .p-menu__delivery
+            span.p-menu__delivery-text Доставка наших блюд в Москве - FOODFOX
 
 
 
