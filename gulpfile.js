@@ -98,6 +98,7 @@ function html() {
 function scripts() {
    return gulp.src([
                'src/libs/jquery/jquery-3.2.1.slim.min.js',
+               'node_modules/svg4everybody/dist/svg4everybody.js',
                'src/libs/magnific-popup/dist/jquery.magnific-popup.js',
                'src/libs/slick-slider/slick/slick.js',
                'src/js/main.js'

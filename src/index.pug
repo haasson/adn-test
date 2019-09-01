@@ -169,77 +169,69 @@ html(lang="ru")
                            p.opinion__text Помогите нам сделать наши теремки лучше! Заходите на форум, и оставляйте ваши отзывы и пожелания
                            a.button.opinion__btn(href="#") Оставить отзыв
 
+                  - 
+                     let newsList = [
+                        {tag: 'Новости', title:'Фотоконкурс #ТеремокВкусно в Instagram', date: '29.11.2017'},
+                        {tag: 'Пресса о нас', title:'Секреты успешного предпринимательства от Михаила Гончарова', date: '29.11.2017'},
+                        {tag: 'Горячие блинновости', title:'Фотоконкурс #ТеремокВкусно в Instagram', date: '29.11.2017'},
+                        {tag: 'Пресса о нас', title:'«Теремок» в топ-50 лучших заведений Нью-Йорка!'},
+                        {tag: 'Горячие блинновости', title:'«Теремок» — убойная сила!', date: '29.11.2017'},
+                        {tag: 'Горячие блинновости', title:'Фотоконкурс #ТеремокВкусно в Instagram', date: '29.11.2017'},
+                        {tag: 'Новости', title:'Фотоконкурс #ТеремокВкусно в Instagram', date: '29.11.2017'},
+                        {tag: 'Пресса о нас', title:'Секреты успешного предпринимательства от Михаила Гончарова', date: '29.11.2017'},
+                        {tag: 'Горячие блинновости', title:'Фотоконкурс #ТеремокВкусно в Instagram', date: '29.11.2017'},
+                        {tag: 'Пресса о нас', title:'«Теремок» в топ-50 лучших заведений Нью-Йорка!'},
+                        {tag: 'Горячие блинновости', title:'«Теремок» — убойная сила!', date: '29.11.2017'},
+                        {tag: 'Горячие блинновости', title:'Фотоконкурс #ТеремокВкусно в Instagram', date: '29.11.2017'},
+                        ]
                   .content__news.news 
                      .wrapper
                         .news__list
-                           .news__item
-                              span.news__tag Новости
-                              h3.news__title.news__title_gora Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Пресса о нас
-                              h3.news__title.news__title_hagin Секреты успешного предпринимательства от Михаила Гончарова
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Пресса о нас
-                              h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_hagin «Теремок» — убойная сила!
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Новости
-                              h3.news__title.news__title_gora Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Пресса о нас
-                              h3.news__title.news__title_hagin Секреты успешного предпринимательства от Михаила Гончарова
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Пресса о нас
-                              h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_hagin «Теремок» — убойная сила!
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Пресса о нас
-                              h3.news__title.news__title_gora «Теремок» в топ-50 лучших заведений Нью-Йорка!
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_hagin «Теремок» — убойная сила!
-                              span.news__date 29.11.2017
-                           .news__item
-                              span.news__tag Горячие блинновости
-                              h3.news__title.news__title_montserrat-black Фотоконкурс #ТеремокВкусно в Instagram
-                              span.news__date 29.11.2017
+                           mixin news(obj, index)
+                              div(class=`news__item ${index < 6 ? "" : 'news__item_desktop'}`) 
+                                 span.news__tag= obj.tag
+                                 - let font
+                                 case (index % 3)
+                                    when 0
+                                       - font = 'gora'
+                                    when 1
+                                       - font = 'hagin'
+                                    when 2
+                                       - font = 'montserrat-black'
+                                 h3(class=`news__title news__title_${font}`)= obj.title  
+                                 span.news__date= obj.date
+                           
+                           - for (let i = 0; i < newsList.length; i++)
+                              +news(newsList[i], i)
 
                         a.button.news__btn(href="#") Все события
 
 
+      section.section.about
+         .wrapper
+            .about__list
+               .about__item.about__item_left
+                  .about__header.about__header_work
+                     img.about__img(src="img/our_team-old.jpg", alt="")
+                     .about__content
+                        h3.about__title Работа
+                        svg.icon.icon-divider
+                           use(xlink:href="svg/sprite.svg#line") 
+                        span.about__subtitle у нас
+                  .about__description
+                     p.about__text Мы любим и уважаем наших сотрудников, а они в свою очередь ответственно относятся к своей работе, чтобы ежедневно радовать наших гостей. Стань частью нашей команды, и получи бесценный опыт, с возможностью карьерного роста
+                     a.button.about__btn Наши вакансии
+               .about__item.about__item_right
+                  .about__header.about__header_teremki
+                     img.about__img(src="img/teremki.jpg", alt="")
+                     .about__content
+                        h3.about__title Наши
+                        svg.icon.icon-divider
+                           use(xlink:href="svg/sprite.svg#line") 
+                        span.about__subtitle теремки
+                  .about__description
+                     p.about__text Компания "Теремок" основана в 1998 году. В настоящее время "Теремок" – крупнейшая сеть ресторанов русской кухни, насчитывающая более 280 точек. Мы постоянно развиваемся, открывая новые рестораны.
+                     a.button.about__btn Наши заведения
 
 
 
@@ -247,23 +239,10 @@ html(lang="ru")
 
 
 
-      .section
-         p some
-         p some
-         p some
-         p some
-         p some
-         p some
-         p some
-         p some
-         p some
-         p some
 
-      .your-class
-         .one content
-         .one content
-         .one content
 
+
+ 
 
 
 

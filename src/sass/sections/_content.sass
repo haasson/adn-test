@@ -1,19 +1,8 @@
 .content
-   background-color: #f6f5f4
-
    &-wrapper_mobile
       width: 100%
-
-   &__column
-      &_static
-         // display: flex
-         // flex-direction: column
-
-   
    
 /*======================== MEDIA QUERIES ===============================*/
-
-
 @media (min-width: 1184px)
    .content
       padding-top: 65px
@@ -36,26 +25,20 @@
             left: 50%
             width: 50%
 
- 
 /*============================= END =====================================*/  
    
-
-
 .menu
    display: flex
    flex-direction: column
    color: #000
-
 
    &__category
       font-family: 'Hagin Caps Medium', sans-serif
       font-size: 18px
       text-transform: uppercase
       letter-spacing: 0
-
       &-slider
          position: relative
-
       
       &-underline
          position: absolute
@@ -67,7 +50,6 @@
          transform: translateX(-50%)
          background-color: $rouge
          transition: .3s
-
 
       &-item
          padding: 0 13px
@@ -91,16 +73,13 @@
             right: 0
             background-image: linear-gradient(to left, #f5f5f5, rgba(255, 255, 255, 0))
 
-      
    &__product
-
       &_mobile
          margin-top: 27px
          margin-bottom: 5px
 
          .slick-slide
             padding: 0 8px
-
          .slick-list
             padding: 4px 0 !important
 
@@ -137,7 +116,6 @@
          text-transform: uppercase
          letter-spacing: 2px
 
-
    &__buttons
       display: flex
       justify-content: center
@@ -148,10 +126,7 @@
       margin: 0 8px
 
 
-
 /*======================== MEDIA QUERIES ===============================*/
-
-
 @media (min-width: 1184px)
    .menu
       flex-wrap: wrap
@@ -220,14 +195,11 @@
                   & button
                      display: none
 
-
          &-title
             margin-top: 0
             margin-bottom: 45px
             font-family: 'Hagin Caps Medium', serif
             font-size: 18px
-
-         
 
          &-text
             margin-top: 12px
@@ -286,8 +258,6 @@
       border: none
 
 /*======================== MEDIA QUERIES ===============================*/
-
-
 @media (min-width: 680px)
    .opinion
       padding: 135px
@@ -314,7 +284,6 @@
 /*============================= END =====================================*/
 
 
-
 .offer
    padding-top: 50px
 
@@ -323,10 +292,10 @@
          display: none
          &-dots
             display: none
-      
 
    &__item
       margin: 0 10px
+
 
 /*======================== MEDIA QUERIES ===============================*/
 @media (min-width: 680px)
@@ -375,7 +344,6 @@
 /*============================= END =====================================*/
       
 
-
 .news
    padding-bottom: 40px
    text-align: center
@@ -388,6 +356,8 @@
       align-items: center
       padding: 40px 0
       border-bottom: 1px solid #cecece
+      &_desktop
+         display: none
 
    &__tag
       display: block
@@ -418,18 +388,16 @@
       margin-top: 40px
 
 /*======================== MEDIA QUERIES ===============================*/
-
 @media (min-width: 1184px)
    .news
       padding-bottom: 40px
-
-
-
+      &__item
+         &_desktop
+            display: flex
 
 /*============================= END =====================================*/
 
-
-
+   
 .icon
    &-menu-slider
       fill: transparent

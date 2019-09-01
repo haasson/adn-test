@@ -4,6 +4,9 @@ let blocks = document.querySelectorAll('.block1');
 // --- Magnific Popup Settings ---
 
 $(document).ready(function () {
+
+   
+
    $('.popup-with-form').magnificPopup({
       type: 'inline',
       preloader: true,
@@ -283,6 +286,8 @@ $(document).ready(function () {
          }
          else dynamicBlock.style.transform = ``;
       }
+
+      svg4everybody({});
    };
 
 
