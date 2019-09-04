@@ -8,7 +8,7 @@ html(lang="ru")
       link(rel="stylesheet" href="css/style.css")
    body
 
-      //- Mixins
+      //- Mixins --------------------------------------------------------------------
       mixin svg(name, classList)
          svg(class=`icon ${classList}`)
             use(xlink:href=`svg/sprite.svg${name}`)
@@ -43,7 +43,7 @@ html(lang="ru")
                   a(href=`${socialList[i].link}`)
                      +svg(socialList[i].type, `${section}__icon-social`)
 
-      //- ---------------------------------- BODY
+      //- BODY ----------------------------------------------------------------------
 
       header.header
          video.header__video(src="video/teremok_final.mp4" loop muted autoplay preload="auto" poster="video/video-1920.jpg")

@@ -46,7 +46,6 @@ a
 .select
    position: relative
    display: flex
-   justify-content: space-between
    align-items: center
    padding: 0 10px
    box-sizing: border-box
@@ -96,6 +95,10 @@ a
          background-color: $pale
 
 .icon-select-caret
+   position: absolute
+   right: 10px
+   top: 50%
+   transform: translateY(-50%)
    fill: transparent
    stroke: $rouge
    width: 24px
@@ -110,8 +113,6 @@ a
    display: block
 
 /*======================== MEDIA QUERIES ===============================*/
-
-
 @media (min-width: 680px)
    .wrapper
       width: calc(100% - 100px)

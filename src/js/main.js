@@ -370,8 +370,8 @@ $(document).ready(function () {
          let options = item.querySelectorAll('.select__option');
          options.forEach(el => {
             el.addEventListener('click', function () {
-               document.querySelector('.select__value').innerText = el.innerText;
-               document.querySelector('.select__option_selected').classList.remove('select__option_selected')
+               item.querySelector('.select__value').innerText = el.innerText;
+               item.querySelector('.select__option_selected').classList.remove('select__option_selected')
                el.classList.add('select__option_selected')
             });
          });
