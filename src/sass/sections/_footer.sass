@@ -41,26 +41,28 @@
          display: flex
          justify-content: center
          align-items: center
-   &__social-list
-      display: flex
-      justify-content: center
-      align-items: center
-      height: 48px
-
    &__social
-      margin: 0 20px
+      &-list
+         display: flex
+         justify-content: center
+         align-items: center
+         height: 48px
+
+      &-item
+         margin: 0 20px
 
    &__developer
       display: none
 
-.icon-footer-social
-   fill: white
-   font-size: 16px
+   &__icon
+      &-social
+         fill: white
+         font-size: 16px
 
-.icon-footer-logo
-   width: 90px
-   height: 27px
-   fill: $rouge
+      &-logo
+         width: 90px
+         height: 27px
+         fill: $rouge
 
 /*======================== MEDIA QUERIES ===============================*/
 @media (min-width: 1184px)
@@ -88,7 +90,6 @@
             width: 190px
             padding-right: 0
             
-
       &__link
          position: relative
          display: inline-block
@@ -111,7 +112,6 @@
          &:hover
             &::before
                transform: scaleX(1)
-
 
       &__email
          margin-bottom: 18px
@@ -152,9 +152,6 @@
             line-height: 24px
             color: #8c8c8c
 
-
-@media (min-width: 1334px)
-   .footer
 
 @media (min-width: 1680px)
    .footer

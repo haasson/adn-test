@@ -97,11 +97,17 @@ function html() {
 
 function scripts() {
    return gulp.src([
-               'src/libs/jquery/jquery-3.2.1.slim.min.js',
+               // Polyfills
+               'node_modules/@babel/polyfill/dist/polyfill.js',
+               'node_modules/object-fit-images/dist/ofi.js',
+               'node_modules/smoothscroll-polyfill/dist/smoothscroll.js',
                'node_modules/svg4everybody/dist/svg4everybody.js',
-               'src/libs/magnific-popup/dist/jquery.magnific-popup.js',
-               'src/libs/slick-slider/slick/slick.js',
-               'src/js/main.js'
+
+               // Scripts
+               'src/js/jquery-3.2.1.slim.min.js',
+               'src/js/jquery.magnific-popup.js',
+               'src/js/slick.js',
+               'src/js/main.js',
             ])
               .pipe(gulpif(isDev, sourcemaps.init()))
               .pipe(concat('main.min.js'))

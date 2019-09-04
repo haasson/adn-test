@@ -126,6 +126,17 @@
    &__button 
       margin: 0 8px
 
+   &__icon
+      &-menu-slider
+         fill: transparent
+         stroke: $rouge
+         font-size: 28px
+         &_left
+            transform: rotate(90deg)
+         &_right
+            margin-left: auto
+            transform: rotate(-90deg)
+
 
 /*======================== MEDIA QUERIES ===============================*/
 @media (min-width: 1184px)
@@ -169,7 +180,6 @@
             img
                transform: translateY(0px)
                transition: .3s
-
 
          &-item
             position: relative
@@ -257,6 +267,11 @@
       margin-top: 16px
       background-color: $pale
       border: none
+
+   &__icon
+      &-opinion
+         fill: white
+         font-size: 120px
 
 /*======================== MEDIA QUERIES ===============================*/
 @media (min-width: 680px)
@@ -399,19 +414,6 @@
 /*============================= END =====================================*/
 
    
-.icon
-   &-menu-slider
-      fill: transparent
-      stroke: $rouge
-      font-size: 28px
-      &_left
-         transform: rotate(90deg)
-      &_right
-         margin-left: auto
-         transform: rotate(-90deg)
 
-   &-opinion
-      fill: white
-      font-size: 120px
 
 

@@ -31,15 +31,22 @@
       margin-top: 48px
 
    &__slider
-      &-item
-         margin: 0 20px
+      margin-top: 32px
+      &-img
+         margin: 0 auto
+         width: 64px
+         height: 64px
+         background-color: #989898
+         border-radius: 50%
+
       &-arrow
          display: none
-.icon-arrow-large
-   fill: transparent
-   stroke: $rouge
-   height: 61px
-   width: 22px
+   &__icon
+      &-arrow-large
+         fill: transparent
+         stroke: $rouge
+         height: 61px
+         width: 22px
 
 /*======================== MEDIA QUERIES ===============================*/
 
@@ -66,6 +73,7 @@
          position: relative
          max-width: 850px
          margin: 0 auto
+         margin-top: 32px
          &-arrow
             display: block
             position: absolute

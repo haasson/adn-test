@@ -7,43 +7,71 @@ html(lang="ru")
       title Document
       link(rel="stylesheet" href="css/style.css")
    body
+
+      //- Mixins
+      mixin svg(name, classList)
+         svg(class=`icon ${classList}`)
+            use(xlink:href=`svg/sprite.svg${name}`)
+
+      mixin squareBlock(obj)
+         .p-menu__square
+            img.p-menu__img(src=`img/${obj.image}`)
+            .p-menu__symbol
+               +svg(obj.svg, 'p-menu__icon-symbol')
+
+      mixin addSelect(classList)
+         div(class=`select ${classList}`)
+            span.select__value.select__text Москва
+            +svg('#static-mobile', 'icon-select-caret')
+            .select__dropdown
+               .select__option.select__text Краснодар
+               .select__option.select__option_selected.select__text Москва
+               .select__option.select__text Санкт-Петербург
+
+      - 
+         let socialList = [
+            {type: '#instagram', link: 'http://instagram.com'},
+            {type: '#vk', link: 'http://vk.com'},
+            {type: '#fb', link: 'http://facebook.com'},
+            {type: '#tw', link: 'http://tw.com'},
+         ]
+
+      mixin addSocialList(section)
+         div(class=`${section}__social-list`)
+            - for (let i=0; i<socialList.length; i++)
+               div(class=`${section}__social-item`)
+                  a(href=`${socialList[i].link}`)
+                     +svg(socialList[i].type, `${section}__icon-social`)
+
+      //- ---------------------------------- BODY
+
       header.header
          video.header__video(src="video/teremok_final.mp4" loop muted autoplay preload="auto" poster="video/video-1920.jpg")
 
          .header__topline
             .header__navbar
                a.header__logo(href="#")
-                  svg.icon.icon-logo
-                     use(xlink:href="svg/sprite.svg#mobile-red")
+                  +svg('#logo', 'header__icon-logo')
 
                nav.header__menu
                   a.header__menu-item(href="#")
-                     svg.icon.header__menu-icon.icon-forum
-                        use(xlink:href="svg/sprite.svg#forum") 
+                     +svg('#forum', 'header__menu-icon header__icon-forum')
                      span.header__menu-text Ваше мнение
                   .header__menu-wrapper
                      a.header__menu-item.header__menu-item_select(href="#" data-dropdown=".header__dropdown_menu")
-                        svg.icon.header__menu-icon.icon-food-menu
-                           use(xlink:href="svg/sprite.svg#food-menu")
+                        +svg('#food-menu', 'header__menu-icon header__icon-food-menu')
                         span.header__menu-text Наше меню
-                        svg.icon.icon-dropdown
-                           use(xlink:href="svg/sprite.svg#static")
-
-
+                        +svg('#static', 'header__icon-dropdown')
                   a.header__menu-item.header__menu-item_desktop(href="#")
                      span.header__menu-text Акции
-
                   a.header__menu-item.header__menu-item_desktop(href="#")
                      span.header__menu-text Наши теремки
 
                .header__location(data-dropdown=".header__dropdown_city")
-                  svg.icon.icon-location 
-                     use(xlink:href="svg/sprite.svg#menu") 
+                  +svg('#menu', 'header__icon-location ')
                   span.header__menu-text Москва
 
                .header__burger
-                  a.header__burger-link.header__burger-link_mobile(href="#mfp-menu_mobile")
-                     span.header__burger-line
                   a.header__burger-link(href="#mfp-menu")
                      span.header__burger-line
 
@@ -65,19 +93,14 @@ html(lang="ru")
             .header__content
                h1.header__title «Теремок»
                .header__subtitle-wrapper
-                  svg.icon.icon-slogan
-                     use(xlink:href="svg/sprite.svg#teremok_slogan_small") 
+                  +svg('#teremok_slogan_small', 'header__icon-slogan')
                   span.header__subtitle_first это
-                  svg.icon.icon-slogan.icon-slogan_right
-                     use(xlink:href="svg/sprite.svg#teremok_slogan_small") 
+                     +svg('#teremok_slogan_small', 'header__icon-slogan header__icon-slogan_right')
                span.header__subtitle_second не фастфуд!
                p.header__text Мы придерживаемся современного улучшенного подхода к быстрому питанию, в котором отменный вкус cочетается с высокой скоростью обслуживания
                .header__arrow-block
-                  svg.icon.icon-pointer
-                     use(xlink:href="svg/sprite.svg#pointer-animate") 
-                  svg.icon.icon-arrow-down 
-                     use(xlink:href="svg/sprite.svg#arrow-large") 
-
+                  +svg('#pointer-animate', 'header__icon-pointer')
+                  +svg('#arrow-large', 'header__icon-arrow-down ')
 
 
       section.section.content
@@ -93,11 +116,9 @@ html(lang="ru")
                               each value in categories
                                  .menu__category-item= value
                            .menu__category-arrow.menu__category-arrow_left
-                              svg.icon.icon-menu-slider.icon-menu-slider_left
-                                 use(xlink:href="svg/sprite.svg#static")
+                              +svg('#static', 'menu__icon-menu-slider menu__icon-menu-slider_left')
                            .menu__category-arrow.menu__category-arrow_right
-                              svg.icon.icon-menu-slider.icon-menu-slider_right
-                                 use(xlink:href="svg/sprite.svg#static")
+                              +svg('#static', 'menu__icon-menu-slider menu__icon-menu-slider_right')
 
                      .menu__product-slider_mobile
                         .menu__product_mobile
@@ -128,8 +149,7 @@ html(lang="ru")
 
                   .content__opinion.opinion.opinion_mobile
                      .opinion__content
-                        svg.icon.icon-opinion
-                           use(xlink:href="svg/sprite.svg#vashe_mnenie")
+                        +svg('#vashe_mnenie', 'opinion__icon-opinion')
                         .opinion-wrapper
                            p.opinion__text Помогите нам сделать наши теремки лучше! Заходите на форум, и оставляйте ваши отзывы и пожелания
                            a.button.opinion__btn(href="#") Оставить отзыв
@@ -148,11 +168,9 @@ html(lang="ru")
 
 
                .content__column_dynamic
-
                   .content__opinion.opinion.opinion_desktop
                      .opinion__content
-                        svg.icon.icon-opinion
-                           use(xlink:href="svg/sprite.svg#vashe_mnenie")
+                        +svg('#vashe_mnenie', 'opinion__icon-opinion')
                         .opinion-wrapper
                            p.opinion__text Помогите нам сделать наши теремки лучше! Заходите на форум, и оставляйте ваши отзывы и пожелания
                            a.button.opinion__btn(href="#") Оставить отзыв
@@ -203,8 +221,7 @@ html(lang="ru")
                      img.about__img(src="img/our_team-old.jpg", alt="")
                      .about__content
                         h3.about__title Работа
-                        svg.icon.icon-divider
-                           use(xlink:href="svg/sprite.svg#line") 
+                        +svg('#line', 'about__icon-divider')
                         span.about__subtitle у нас
                   .about__description
                      p.about__text Мы любим и уважаем наших сотрудников, а они в свою очередь ответственно относятся к своей работе, чтобы ежедневно радовать наших гостей. Стань частью нашей команды, и получи бесценный опыт, с возможностью карьерного роста
@@ -214,12 +231,12 @@ html(lang="ru")
                      img.about__img(src="img/teremki.jpg", alt="")
                      .about__content
                         h3.about__title Наши
-                        svg.icon.icon-divider
-                           use(xlink:href="svg/sprite.svg#line") 
+                        +svg('#line', 'about__icon-divider')
                         span.about__subtitle теремки
                   .about__description
                      p.about__text Компания "Теремок" основана в 1998 году. В настоящее время "Теремок" – крупнейшая сеть ресторанов русской кухни, насчитывающая более 280 точек. Мы постоянно развиваемся, открывая новые рестораны.
                      a.button.about__btn Наши заведения
+
 
       section.section.partners
          .wrapper
@@ -235,36 +252,25 @@ html(lang="ru")
             .partners__slider-list
                - for(let i = 0; i < 8; i++)
                   .partners__slider-item
-                     img(src="img/coca-cola.png" alt="")
+                     .partners__slider-img
             .partners__slider-arrow.partners__slider-arrow_left
-               svg.icon.icon-arrow-large
-                  use(xlink:href="svg/sprite.svg#arrow-large") 
+               +svg('#arrow-large', 'partners__icon-arrow-large')
             .partners__slider-arrow.partners__slider-arrow_right
-               svg.icon.icon-arrow-large
-                  use(xlink:href="svg/sprite.svg#arrow-large") 
+               +svg('#arrow-large', 'partners__icon-arrow-large')
+
 
       footer.footer
          .wrapper
             .footer__content_mobile
                span.footer__office Центральный офис в Москве
                a.footer__phone(a="#" tel="+74959562730") +7 (495) 956-27-30 
-               .select.footer__select
-                  span.select__value.select__text Москва
-                  svg.icon.icon-select-caret
-                     use(xlink:href="svg/sprite.svg#static-mobile")
-                  .select__dropdown
-                     .select__option.select__text Краснодар
-                     .select__option.select__option_selected.select__text Москва
-                     .select__option.select__text Санкт-Петербург
-
+               +addSelect('footer__select')
                .footer__copy @ Теремок, 2017
-
 
             .footer__content_desktop
                .footer__item.footer__item_logo
                   a.footer__logo(href="#")
-                     svg.icon.icon-footer-logo
-                        use(xlink:href="svg/sprite.svg#mobile-red")
+                     +svg('#logo', 'footer__icon-logo')
 
                mixin footerBlock(arr)
                   .footer__item
@@ -281,122 +287,71 @@ html(lang="ru")
                   a.footer__phone(href="" tel="+74959562730") +7 (495) 956-27-30
                   a.footer__phone(href="" tel="+74957369394") +7 (495) 736-93-94
 
-
-
          .footer__bottom
             .wrapper
                .footer__bottom-content
                   .footer__copy.footer__copy_bottom @ Теремок, 2017
-                  .footer__social-list
-                     mixin social(type)
-                        .footer__social-item
-                           .footer__social
-                              a(href="#")
-                                 svg.icon.icon-footer-social
-                                    use(xlink:href=`svg/sprite.svg#${type}`)
-                     +social('instagram')
-                     +social('vk')
-                     +social('fb')
-                     +social('tw')
-
+                  +addSocialList('footer')
                   .footer__developer
                      a.footer__developer-link(href="#") Разработка сайта - ADN Digital Studio
 
 
-mixin p-menuSocial(type)
-   .p-menu__social-item
-      a.p-menu__social-link(href="#")
-         svg.icon.icon-p-social
-            use(xlink:href=`svg/sprite.svg#${type}`)
-
-//- .white-popup-block.mfp-hide#mfp-menu_mobile
-//-    .p-menu
-//-       .p-menu__section_top.p-menu__section
-//-          .p-menu__close-btn
-//-             svg.icon.icon-p-close
-//-                use(xlink:href="svg/sprite.svg#desktop-close")
-//-          .p-menu__logo
-//-             svg.icon.icon-p-logo
-//-                use(xlink:href="svg/sprite.svg#mobile-red")
-//-          .p-menu__list
-//-             a.p-menu__link(href="#") Наше меню
-//-             a.p-menu__link(href="#") Ваше мнение
-//-             a.p-menu__link(href="#") О теремке
-//-             a.p-menu__link(href="#") Работа у нас
-//-             a.p-menu__link(href="#") Наши акции
-//-             a.p-menu__link(href="#") События
-//-             a.p-menu__link(href="#") наши теремки
-//-             a.p-menu__link(href="#") Контакты
-//-          .p-menu__social-list
-//-             +p-menuSocial('instagram')
-//-             +p-menuSocial('vk')
-//-             +p-menuSocial('fb')
-//-             +p-menuSocial('tw')
-//-       .p-menu__section_bottom.p-menu__section
-//-          .p-menu__list.p-menu__list_bottom
-//-             a.p-menu__link.p-menu__link_black(href="#") калькулятор калорий
-//-             a.p-menu__link.p-menu__link_black(href="#") Предложить помещение
-//-             a.p-menu__link.p-menu__link_black(href="#") Предложить продукцию
-//-             a.p-menu__link.p-menu__link_black(href="#") Прессе
-//-             a.p-menu__link.p-menu__link_black(href="#") Партнерство
-//-             a.p-menu__link.p-menu__link_black(href="#") Связаться с руководством
-//-          .select.p-menu__select
-//-             span.select__value.select__text Москва
-//-             svg.icon.icon-select-caret
-//-                use(xlink:href="svg/sprite.svg#static-mobile")
-//-             .select__dropdown
-//-                .select__option.select__text Краснодар
-//-                .select__option.select__option_selected.select__text Москва
-//-                .select__option.select__text Санкт-Петербург
-//-          .p-menu__delivery
-//-             span.p-menu__delivery-text Доставка наших блюд в Москве - FOODFOX
-
-
+//- -------------------- Popup 
 
 .white-popup-block.mfp-hide#mfp-menu
-   .p-menu
-      mixin squareBlock(obj)
-         .p-menu__square
-            img.p-menu__img(src=`img/${obj.image}`)
-            .p-menu__symbol
-               svg.icon.icon-p-symbol
-                  use(xlink:href=`svg/sprite.svg#${obj.svg}`)
+
+   //- Mobile 
+   .p-menu.p-menu_mobile
+      .p-menu__section_top.p-menu__section
+         .p-menu__close-btn
+            +svg('#desktop-close', 'p-menu__icon-close')
+         .p-menu__logo
+            +svg('#logo', 'p-menu__icon-logo')
+         .p-menu__list
+            a.p-menu__link(href="#") Наше меню
+            a.p-menu__link(href="#") Ваше мнение
+            a.p-menu__link(href="#") О теремке
+            a.p-menu__link(href="#") Работа у нас
+            a.p-menu__link(href="#") Наши акции
+            a.p-menu__link(href="#") События
+            a.p-menu__link(href="#") наши теремки
+            a.p-menu__link(href="#") Контакты
+         +addSocialList('p-menu')
+      .p-menu__section_bottom.p-menu__section
+         .p-menu__list.p-menu__list_bottom
+            a.p-menu__link.p-menu__link_black(href="#") калькулятор калорий
+            a.p-menu__link.p-menu__link_black(href="#") Предложить помещение
+            a.p-menu__link.p-menu__link_black(href="#") Предложить продукцию
+            a.p-menu__link.p-menu__link_black(href="#") Прессе
+            a.p-menu__link.p-menu__link_black(href="#") Партнерство
+            a.p-menu__link.p-menu__link_black(href="#") Связаться с руководством
+         +addSelect('p-menu__select')
+         .p-menu__delivery
+            span.p-menu__delivery-text Доставка наших блюд в Москве - FOODFOX
+   
+   //- Desktop 
+   .p-menu.p-menu_desktop
       .p-menu__block.p-menu__block_left
-         +squareBlock({image: 'p-menu-1.jpg', svg: 'o_teremke'})
-         +squareBlock({image: 'p-menu-2.jpg', svg: 'nashe_menu'})
+         +squareBlock({image: 'p-menu-1.jpg', svg: '#o_teremke'})
+         +squareBlock({image: 'p-menu-2.jpg', svg: '#nashe_menu'})
       .p-menu__block.p-menu__block_mid
-         +squareBlock({image: 'p-menu-2.jpg', svg: 'vashe_mnenie'})
-         +squareBlock({image: 'p-menu-1.jpg', svg: 'nashi_akcii'})
+         +squareBlock({image: 'p-menu-2.jpg', svg: '#vashe_mnenie'})
+         +squareBlock({image: 'p-menu-1.jpg', svg: '#nashi_akcii'})
 
       .p-menu__block.p-menu__block_right
          .p-menu__close-btn
-            svg.icon.icon-p-close
-               use(xlink:href="svg/sprite.svg#desktop-close")
+            +svg('#desktop-close', 'p-menu__icon-close')
          .p-menu__logo
-            svg.icon.icon-p-logo
-               use(xlink:href="svg/sprite.svg#mobile-red")
-         .select.p-menu__select
-            span.select__value.select__text Москва
-            svg.icon.icon-select-caret
-               use(xlink:href="svg/sprite.svg#static-mobile")
-            .select__dropdown
-               .select__option.select__text Краснодар
-               .select__option.select__option_selected.select__text Москва
-               .select__option.select__text Санкт-Петербург
+            +svg('#logo', 'p-menu__icon-logo')
+         +addSelect('p-menu__select')
          .p-menu__list
             a.p-menu__link(href="#") События
             a.p-menu__link(href="#") Наши заведения
             a.p-menu__link(href="#") Работа у нас
             a.p-menu__link(href="#") Контакты
             a.p-menu__link(href="#") Калькулятор калорий
-         .p-menu__social-list
-            +p-menuSocial('instagram')
-            +p-menuSocial('vk')
-            +p-menuSocial('fb')
-            +p-menuSocial('tw')
+         +addSocialList('p-menu')
          .p-menu__delivery
             span.p-menu__delivery-text Доставка наших блюд в Москве - FOODFOX
-
-
 
       script(src="js/main.min.js")

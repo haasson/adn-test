@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "gulpfile.js",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "gulp": "^4.0.2",
     "gulp-pug": "^4.0.1",
+    "object-fit-images": "^3.2.4",
+    "smoothscroll-polyfill": "^0.4.4",
     "svg4everybody": "^2.1.9",
     "svgxuse": "^1.2.6"
   },
