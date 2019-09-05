@@ -213,7 +213,7 @@ $(document).ready(function () {
       let cityBtn = document.querySelector('.header__location');
 
       if (document.documentElement.clientWidth > 1183) {
-         navbar.addEventListener('mousemove', showNavbarBg)
+         navbar.addEventListener('mousemove', showNavbarBg);
          navbar.addEventListener('mouseleave', checkNavbarBg);
 
          menuBtn.addEventListener('mouseover', showDropdown);
@@ -229,10 +229,8 @@ $(document).ready(function () {
          cityBtn.removeEventListener('mouseleave', hideDropdown);
       }
 
-      document.addEventListener('scroll', function () {
-         checkNavbarBg()
-      })
-      window.addEventListener('resize', setEventListeners)
+      document.addEventListener('scroll', checkNavbarBg);
+      window.addEventListener('resize', setEventListeners);
    }
 
    
