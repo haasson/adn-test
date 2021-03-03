@@ -34,7 +34,7 @@
     "gulp-tinypng-compress": "^1.2.5",
     "gulp-uglify": "^3.0.2",
     "gulp-uncss-sp": "0.0.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "svgSprite": "^1.2.0"
   },
   "scripts": {
